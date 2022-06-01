@@ -1,5 +1,5 @@
 const Sales = (sequelize, DataTypes) => {
-  const Sales = sequelize.define("sales", {
+  const Sales = sequelize.define("Sales", {
     id: {
       autoIncrement: true,
       allowNull: false,

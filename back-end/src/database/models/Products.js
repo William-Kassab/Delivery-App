@@ -1,6 +1,6 @@
 'use strict';
 const Products = (sequelize, DataTypes) => {
-  const Products = sequelize.define("products", {
+  const Products = sequelize.define("Products", {
     id: {
       autoIncrement: true,
       primaryKey: true,
@@ -28,5 +28,3 @@ const Products = (sequelize, DataTypes) => {
   return Products;
 };
 module.exports = Products;
-
-// teste;
