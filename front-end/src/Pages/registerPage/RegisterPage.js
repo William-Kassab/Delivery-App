@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { authLogin } from '../../service/api';
 
-function LoginPage() {
+function RegisterPage() {
   const [login, setLogin] = useState({
     email: '',
     password: '',
   });
-  const [errorMsg, setErrorMsg] = useState(false);
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -17,10 +16,6 @@ function LoginPage() {
 
   async function handleClickLogin() {
     const result = await authLogin(login);
-    if (!result) {
-      setErrorMsg(true);
-    }
-    setErrorMsg(false);
     // localStorage.setItem(Dados do Usuário);
     console.log(result);
   }
@@ -69,23 +64,10 @@ function LoginPage() {
           >
             Login
           </button>
-          <button
-            type="button"
-            data-testid="common_login__button-register"
-          >
-            Ainda não tenho conta
-          </button>
-          {
-            errorMsg && (
-              <p>
-                E-mail ou senha incorretos
-              </p>
-            )
-          }
         </form>
       </div>
     </div>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
