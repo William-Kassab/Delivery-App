@@ -28,3 +28,5 @@ const Products = (sequelize, DataTypes) => {
   return Products;
 };
 module.exports = Products;
+
+// teste;
