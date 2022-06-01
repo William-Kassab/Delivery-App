@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { authLogin } from '../../service/api';
+import rockGlass from '../../images/rockGlass.svg';
+import './loginStyle.css';
 
 function LoginPage() {
   const [login, setLogin] = useState({
@@ -31,14 +33,13 @@ function LoginPage() {
   const isEmailValid = regex.test(login.email);
 
   return (
-    <div>
-      <div>
-        <img
-          id="profile-img"
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="imagem-profile"
-        />
-        <form>
+    <div className="login-page">
+      <div className="login-container">
+        <object className="rocksGlass" type="image/svg+xml" data={ rockGlass }>
+          Glass
+        </object>
+        <h1>App de delivery </h1>
+        <form className="login-form">
           <label htmlFor="email">
             Login
             <input
@@ -63,14 +64,16 @@ function LoginPage() {
           </label>
           <button
             type="button"
+            className="login-btn"
             data-testid="common_login__button-login"
             onClick={ handleClickLogin }
             disabled={ !(isEmailValid && passwordIsValid) }
           >
-            Login
+            LOGIN
           </button>
           <button
             type="button"
+            className="create-btn"
             data-testid="common_login__button-register"
           >
             Ainda não tenho conta
