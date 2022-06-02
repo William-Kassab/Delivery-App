@@ -1,8 +1,12 @@
 import axios from 'axios';
 
+const api = axios.create({
+  baseURL: 'http://localhost:3001',
+});
+
 export const authLogin = async (login) => {
   try {
-    const result = await axios.post('http://localhost:3001/login', login);
+    const result = await api.post('/login', login);
     return result;
   } catch (e) {
     console.error(e);
@@ -12,7 +16,7 @@ export const authLogin = async (login) => {
 
 export const createUser = async (register) => {
   try {
-    const result = await axios.post('http://localhost:3001/register', register);
+    const result = await api.post('/register', register);
     return result;
   } catch (e) {
     console.error(e);
