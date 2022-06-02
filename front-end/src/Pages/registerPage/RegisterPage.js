@@ -1,46 +1,72 @@
 import React, { useState } from 'react';
-import { authLogin } from '../../service/api';
+import { useNavigate } from 'react-router-dom';
+import registerImg from '../../images/registerImg.svg';
+import { createUser } from '../../service/api';
+import './registerStyle.css';
+import backImg from '../../images/left.svg';
 
 function RegisterPage() {
-  const [login, setLogin] = useState({
+  const [register, setRegister] = useState({
+    name: '',
     email: '',
     password: '',
   });
+  const [errorMsg, setErrorMsg] = useState(false);
+  const navigate = useNavigate();
 
   function handleChange({ target }) {
     const { name, value } = target;
-    setLogin({
-      ...login,
+    setRegister({
+      ...register,
       [name]: value });
   }
 
-  async function handleClickLogin() {
-    const result = await authLogin(login);
-    // localStorage.setItem(Dados do Usuário);
-    console.log(result);
+  async function handleClickRegister() {
+    const result = await createUser(register);
+    if (result === 'invalid Register') {
+      setErrorMsg(true);
+    } else {
+      localStorage.setItem('user', JSON.stringify(result.data));
+      navigate('/customer/products');
+      console.log(result.data);
+    }
   }
 
   const regex = (/\S+@\S+\.\S+/);
-  const length = 5;
-  const passwordIsValid = login.password.length > length;
-  const isEmailValid = regex.test(login.email);
+  const lengthEmail = 5;
+  const lengthName = 12;
+  const passwordIsValid = register.password.length > lengthEmail;
+  const isEmailValid = regex.test(register.email);
+  const nameIsValid = register.name.length >= lengthName;
+  const isValid = (passwordIsValid && isEmailValid && nameIsValid);
 
   return (
-    <div>
-      <div>
+    <div className="register-page">
+      <div className="register-container">
         <img
-          id="profile-img"
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="imagem-profile"
+          src={ registerImg }
+          alt="Amigos abrindo uma lata de bebida"
         />
-        <form>
+        <h1>Cadastro</h1>
+        <form className="register-form">
+          <label htmlFor="name">
+            Nome
+            <input
+              type="text"
+              name="name"
+              value={ register.name }
+              data-testid="common_register__input-name"
+              placeholder="Fulano"
+              onChange={ handleChange }
+            />
+          </label>
           <label htmlFor="email">
-            Login
+            Email
             <input
               type="email"
               name="email"
-              value={ login.email }
-              data-testid="common_login__input-email"
+              value={ register.email }
+              data-testid="common_register__input-email"
               placeholder="email@trybeer.com.br"
               onChange={ handleChange }
             />
@@ -50,21 +76,42 @@ function RegisterPage() {
             <input
               type="password"
               name="password"
-              value={ login.password }
-              data-testid="common_login__input-password"
+              value={ register.password }
+              data-testid="common_register__input-password"
               placeholder="***********"
               onChange={ handleChange }
             />
           </label>
           <button
             type="button"
-            data-testid="common_login__button-login"
-            onClick={ handleClickLogin }
-            disabled={ !(isEmailValid && passwordIsValid) }
+            data-testid="common_register__button-register"
+            className="register-btn"
+            onClick={ handleClickRegister }
+            disabled={ !isValid }
           >
-            Login
+            CADASTRAR
           </button>
         </form>
+        {
+          errorMsg && (
+            <p
+              data-testid="common_register__element-invalid_register"
+              style={ { color: 'red' } }
+            >
+              Dados inválidos
+            </p>
+          )
+        }
+        <div>
+          <button
+            type="button"
+            className="back-login"
+            onClick={ () => navigate('/login') }
+          >
+            <img src={ backImg } alt="Left arrow icon" />
+            Voltar
+          </button>
+        </div>
       </div>
     </div>
   );
