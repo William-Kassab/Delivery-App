@@ -1,8 +1,9 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
+const fs = require('fs')
 const { Users } = require('../models');
 
-const secret = process.env.JWT_SECRET;
+const secret = fs.readFileSync('jwt.evaluation.key', { encoding: 'utf8', flag: 'r' });
 
 const loginController = async (req, res) => {
   try {
