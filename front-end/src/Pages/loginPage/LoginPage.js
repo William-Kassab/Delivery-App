@@ -27,6 +27,7 @@ function LoginPage() {
       console.log(result.data);
       setErrorMsg(false);
       localStorage.setItem('user', JSON.stringify(result.data));
+      navigate('/customer/products');
     }
   }
 
