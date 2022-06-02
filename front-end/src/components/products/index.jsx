@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Counter from './counter';
+import Counter from './counter';
+import Button from './button';
 
 const Products = ({ products }) => (
   <main>
@@ -25,10 +26,11 @@ const Products = ({ products }) => (
           >
             {name}
           </p>
-          {/* <Counter id={ id } name={ name } price={ price } /> */}
+          <Counter id={ id } />
         </div>
       </div>
     ))}
+    <Button />
   </main>
 );
 
