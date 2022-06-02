@@ -1,10 +1,11 @@
 require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
 const { User } = require('../models');
 
-const secret = process.env.JWT_SECRET;
+const secret = fs.readFileSync('jwt.evaluation.key', { encoding: 'utf8', flag: 'r' });
 
 module.exports = async (req, res, next) => {
   const token = req.headers.authorization;
