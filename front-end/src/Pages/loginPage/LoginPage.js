@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { authLogin } from '../../service/api';
 import rockGlass from '../../images/rockGlass.svg';
 import './loginStyle.css';
@@ -9,6 +10,7 @@ function LoginPage() {
     password: '',
   });
   const [errorMsg, setErrorMsg] = useState(false);
+  const navigate = useNavigate();
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -19,12 +21,13 @@ function LoginPage() {
 
   async function handleClickLogin() {
     const result = await authLogin(login);
-    if (!result) {
+    if (result === 'invalid Login') {
       setErrorMsg(true);
+    } else {
+      console.log(result.data);
+      setErrorMsg(false);
+      localStorage.setItem('user', JSON.stringify(result.data));
     }
-    setErrorMsg(false);
-    // localStorage.setItem(Dados do Usuário);
-    console.log(result);
   }
 
   const regex = (/\S+@\S+\.\S+/);
@@ -75,17 +78,21 @@ function LoginPage() {
             type="button"
             className="create-btn"
             data-testid="common_login__button-register"
+            onClick={ () => navigate('/register') }
           >
             Ainda não tenho conta
           </button>
-          {
-            errorMsg && (
-              <p>
-                E-mail ou senha incorretos
-              </p>
-            )
-          }
         </form>
+        {
+          errorMsg && (
+            <p
+              data-testid="common_login__element-invalid-email"
+              style={ { color: 'red' } }
+            >
+              E-mail ou senha incorretos
+            </p>
+          )
+        }
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
+// https://www.section.io/engineering-education/how-to-use-cors-in-nodejs-with-express/
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 const {

@@ -1,4 +1,4 @@
-.login-page {
+.register-page {
   align-items: center;
   display: flex;
   height: 100vh;
@@ -6,19 +6,19 @@
   width: 100vw;
 }
 
-.login-container {
+.register-container {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.rocksGlass {
+img {
   height: 200px;
   width: 200px;
 }
 
-.login-form {
+.register-form {
   align-items: center;
   background-color: #eaf1ef;
   box-shadow: rgba(0, 0, 0, 0.35) 1px 5px 15px;
@@ -28,7 +28,22 @@
   padding: 20px;
 }
 
-.login-btn {
+.register-form label {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.register-form input {
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 1px 8px 24px;
+  height: 40px;
+  width: 230px;
+}
+
+.register-btn {
   background-color: #036b52;
   border: none;
   border-radius: 6px;
@@ -39,34 +54,23 @@
   width: 230px;
 }
 
-.login-btn:disabled {
+.register-btn:disabled {
   cursor: not-allowed;
   opacity: 0.4;
 }
 
-.create-btn {
+.back-login {
+  align-items: center;
   background-color: transparent;
-  border: 1px solid #036b52;
-  border-radius: 6px;
-  color: #036b52;
+  border: none;
   cursor: pointer;
-  font-size: 20px;
-  height: 40px;
-  padding: 8px;
-  width: 230px;
-}
-
-.login-form label {
-  border-radius: 4px;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  font-size: 16px;
+  margin-top: 0.5rem;
 }
 
-.login-form input {
-  border: 1px solid black;
-  border-radius: 4px;
-  box-shadow: rgba(149, 157, 165, 0.2) 1px 8px 24px;
-  height: 40px;
-  width: 230px;
+.back-login img {
+  height: 30px;
+  width: 30px;
 }
+
