@@ -27,6 +27,7 @@ function RegisterPage() {
       setErrorMsg(true);
     } else {
       localStorage.setItem('user', JSON.stringify(result.data));
+      navigate('/customer/products');
       console.log(result.data);
     }
   }
