@@ -20,6 +20,6 @@ export const createUser = async (register) => {
     return result;
   } catch (e) {
     console.error(e);
-    return 'invalid Login';
+    return 'invalid Register';
   }
 };

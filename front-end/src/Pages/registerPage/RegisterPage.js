@@ -23,7 +23,7 @@ function RegisterPage() {
 
   async function handleClickRegister() {
     const result = await createUser(register);
-    if (result === 'invalid Login') {
+    if (result === 'invalid Register') {
       setErrorMsg(true);
     } else {
       localStorage.setItem('user', JSON.stringify(result.data));
