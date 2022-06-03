@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Counter from './counter';
+import Counter from './counter';
+import Button from './button';
+import './indexStyle.css';
 
 const Products = ({ products }) => (
-  <main>
+  <main className="products-container">
     {products.map(({ id, price, name, url_image: url }, index) => (
-      <div key={ index }>
-        <div>
+      <div key={ index } className="card-container">
+        <div className="product-card">
           <p
             data-testid={ `customer_products__element-card-price-${id}` }
+            className="productPrice"
           >
-            {price.replace(/\./, ',')}
+            {`R$ ${price.replace(/\./, ',')}`}
           </p>
           <img
             data-testid={ `customer_products__img-card-bg-image-${id}` }
@@ -19,16 +22,17 @@ const Products = ({ products }) => (
             width="50"
           />
         </div>
-        <div>
+        <div className="productName">
           <p
             data-testid={ `customer_products__element-card-title-${id}` }
           >
             {name}
           </p>
-          {/* <Counter id={ id } name={ name } price={ price } /> */}
+          <Counter id={ id } name={ name } price={ price } />
         </div>
       </div>
     ))}
+    <Button />
   </main>
 );
 

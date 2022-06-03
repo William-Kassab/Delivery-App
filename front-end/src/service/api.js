@@ -23,3 +23,13 @@ export const createUser = async (register) => {
     return 'invalid Register';
   }
 };
+
+export const getProducts = async (token) => {
+  try {
+    const result = await api.get('/products', { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'invalid token';
+  }
+};
