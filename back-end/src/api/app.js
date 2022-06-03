@@ -22,10 +22,14 @@ const user = require('../database/controllers/UserController');
 
 const products = require('../database/controllers/ProductController');
 
+const orders = require('../database/controllers/OrderController');
+
 app.post('/login', isEmailValid, isPasswordValid, login.loginController);
 
 app.post('/register', isNameValid, isEmailValid, isPasswordValid, user.createUser);
 
 app.get('/products', validateJWT, products.getAllProducts);
+
+app.post('/orders', orders.createOrder);
 
 module.exports = app;
