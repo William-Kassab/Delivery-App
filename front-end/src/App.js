@@ -5,6 +5,7 @@ import LoginPage from './Pages/loginPage/LoginPage';
 import RegisterPage from './Pages/registerPage/RegisterPage';
 import CustomerProducts from './Pages/customerProducts/CustomerProducts';
 import CheckoutPage from './Pages/checkout/CheckoutPage';
+import AdminManage from './Pages/adminManage/AdminManage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/register" element={ <RegisterPage /> } />
       <Route path="/customer/products" element={ <CustomerProducts /> } />
       <Route path="/customer/checkout" element={ <CheckoutPage /> } />
+      <Route path="/admin/manage" element={ <AdminManage /> } />
     </Routes>
   );
 }
