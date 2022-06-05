@@ -11,7 +11,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  margin: 0px auto;
+  margin: 0 auto;
   max-width: 85%;
   padding: 15px 0;
 }
@@ -36,13 +36,13 @@
 
 .form-container button {
   align-self: flex-end;
-  background-color: #036B52;
+  background-color: #036b52;
   border: none;
   border-radius: 5px;
-  color: #F2FFFC;
+  color: #f2fffc;
   cursor: pointer;
-  text-transform: uppercase;
   font-weight: 700;
   height: 59px;
+  text-transform: uppercase;
   width: 200px;
 }
