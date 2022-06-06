@@ -1,8 +1,15 @@
 import React from 'react';
+import OrderTable from '../../components/checkout/OrderTable';
+import Navbar from '../../components/navbar';
 
 function CheckoutPage() {
   return (
-    <div>CheckoutPage</div>
+    <>
+      <Navbar />
+      <div>
+        <OrderTable />
+      </div>
+    </>
   );
 }
 
