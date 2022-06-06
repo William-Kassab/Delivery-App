@@ -1,19 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MyContext from '../../context/MyContext';
 
 const Button = () => {
-  const { cart } = useContext(MyContext);
-  const [price, setPrice] = useState(0);
+  const { price } = useContext(MyContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const totalNumber = cart
-      .reduce((acc, current) => acc + Number(current.price * current.quantity), 0)
-      .toFixed(2);
-    const totalString = String(totalNumber).replace(/\./, ',');
-    setPrice(totalString);
-  }, [cart]);
 
   return (
     <button
