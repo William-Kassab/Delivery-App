@@ -5,6 +5,7 @@ import MyContext from './MyContext';
 function MyProviderContext({ children }) {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [price, setPrice] = useState('0,00');
+  const [user, setUser] = useState('');
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -18,11 +19,20 @@ function MyProviderContext({ children }) {
     setPrice(totalString);
   }, [cart]);
 
+  useEffect(() => {
+    if (user === '' && JSON.parse(localStorage.getItem('user'))) {
+      const { name, id, token } = JSON.parse(localStorage.getItem('user'));
+      setUser({ name, id, token });
+    }
+  }, []);
+
   const contextValue = {
     cart,
     setCart,
     price,
     setPrice,
+    user,
+    setUser,
   };
 
   return (

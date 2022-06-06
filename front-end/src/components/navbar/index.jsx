@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './navBarStyle.css';
 import userIcon from '../../images/userIcon.png';
 import logout from '../../images/logout.svg';
+import MyContext from '../../context/MyContext';
 
 const Navbar = () => {
-  const [username, setUsername] = useState('');
+  const { user } = useContext(MyContext);
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    const { name } = JSON.parse(localStorage.getItem('user'));
-    setUsername(name);
-  }, []);
 
   function renderNavBar() {
     if (pathname.includes('/customer')) {
@@ -66,7 +62,7 @@ const Navbar = () => {
             data-testid="customer_products__element-navbar-user-full-name"
             className="user"
           >
-            {username}
+            {user.name}
           </span>
         </div>
         <span className="pipeline">|</span>
