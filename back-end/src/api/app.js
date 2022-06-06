@@ -24,6 +24,8 @@ const products = require('../database/controllers/ProductController');
 
 const orders = require('../database/controllers/OrderController');
 
+const salesProducts = require('../database/controllers/SalesProductsController');
+
 app.post('/login', isEmailValid, isPasswordValid, login.loginController);
 
 app.post('/register', isNameValid, isEmailValid, isPasswordValid, user.createUser);
