@@ -1,16 +1,61 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './navBarStyle.css';
 import userIcon from '../../images/userIcon.png';
 import logout from '../../images/logout.svg';
 
 const Navbar = () => {
   const [username, setUsername] = useState('');
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const { name } = JSON.parse(localStorage.getItem('user'));
     setUsername(name);
   }, []);
+
+  function renderNavBar() {
+    if (pathname.includes('/customer')) {
+      return (
+        <>
+          <Link
+            data-testid="customer_products__element-navbar-link-products"
+            to="/customer/products"
+            className="products"
+          >
+            Produtos
+          </Link>
+          <span className="pipeline">|</span>
+          <Link
+            data-testid="customer_products__element-navbar-link-orders"
+            to="/customer/orders"
+            className="requests"
+          >
+            Meus Pedidos
+          </Link>
+        </>
+      );
+    }
+    if (pathname.includes('/seller')) {
+      return (
+        <Link
+          data-testid="seller_orders__element-navbar"
+          to="/seller/orders"
+          className="requests"
+        >
+          Pedidos
+        </Link>
+      );
+    }
+    return (
+      <Link
+        data-testid="admin_manage__element-navbar"
+        to="/admin/manage"
+        className="requests"
+      >
+        Gerenciar Usuários
+      </Link>
+    );
+  }
 
   return (
     <nav className="nav-container">
@@ -25,7 +70,8 @@ const Navbar = () => {
           </span>
         </div>
         <span className="pipeline">|</span>
-        <Link
+        { pathname && renderNavBar() }
+        {/* <Link
           data-testid="customer_products__element-navbar-link-products"
           to="/customer/products"
           className="products"
@@ -39,7 +85,7 @@ const Navbar = () => {
           className="requests"
         >
           Meus Pedidos
-        </Link>
+        </Link> */}
       </div>
       <div className="logoutContainer">
         <Link

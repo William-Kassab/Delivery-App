@@ -26,7 +26,6 @@ function LoginPage() {
     } else {
       setErrorMsg(false);
       localStorage.setItem('user', JSON.stringify(result.data));
-      // console.log('entrou', result.data.role);
       switch (result.data.role) {
       case 'administrator':
         navigate('/admin/manage');
@@ -35,8 +34,7 @@ function LoginPage() {
         navigate('/customer/products');
         break;
       default:
-        navigate('/customer/products');
-        // navigate('/seller/orders');
+        navigate('/seller/orders');
         break;
       }
     }
