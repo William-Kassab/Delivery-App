@@ -46,3 +46,8 @@
   text-transform: uppercase;
   width: 200px;
 }
+
+.form-container button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}

@@ -8,6 +8,7 @@ export default function RegisterForm() {
     password: '',
     role: 'customer',
   });
+  // const [errorMsg, setErrorMsg] = useState(false);
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -15,6 +16,16 @@ export default function RegisterForm() {
       ...register,
       [name]: value });
   }
+
+  // async function handleClickRegister() {
+  //   const result = await createUserByAdmin(register);
+  //   if (result === 'invalid Register') {
+  //     setErrorMsg(true);
+  //   } else {
+  //     setErrorMsg(false);
+  //     console.log(result.data);
+  //   }
+  // }
 
   const regex = /\S+@\S+\.\S+/;
   const lengthEmail = 5;
@@ -78,9 +89,20 @@ export default function RegisterForm() {
           type="button"
           data-testid="admin_manage__button-register"
           disabled={ !isValid }
+          // onClick={ handleClickRegister }
         >
           Cadastrar
         </button>
+        {/* {
+          errorMsg && (
+            <p
+              data-testid="admin_manage__element-invalid-register"
+              style={ { color: 'red' } }
+            >
+              Não foi possível realizar o cadastro
+            </p>
+          )
+        } */}
       </fieldset>
     </form>
   );
