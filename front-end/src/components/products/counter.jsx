@@ -13,7 +13,7 @@ const Counter = ({ id, name, price }) => {
   useEffect(() => {
     const products = JSON.parse(localStorage.getItem('cart'));
     if (products && products.length > 0) {
-      console.log(id);
+      // console.log(id);
       const find = products.find((product) => product.id === id);
       if (find) {
         setCount(find);

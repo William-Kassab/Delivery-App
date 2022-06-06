@@ -24,10 +24,19 @@ function LoginPage() {
     if (result === 'invalid Login') {
       setErrorMsg(true);
     } else {
-      console.log(result.data);
       setErrorMsg(false);
       localStorage.setItem('user', JSON.stringify(result.data));
-      navigate('/customer/products');
+      switch (result.data.role) {
+      case 'administrator':
+        navigate('/admin/manage');
+        break;
+      case 'customer':
+        navigate('/customer/products');
+        break;
+      default:
+        navigate('/seller/orders');
+        break;
+      }
     }
   }
 

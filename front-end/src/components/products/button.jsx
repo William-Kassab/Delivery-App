@@ -12,7 +12,7 @@ const Button = () => {
       .reduce((acc, current) => acc + Number(current.price * current.quantity), 0)
       .toFixed(2);
     const totalString = String(totalNumber).replace(/\./, ',');
-    console.log(totalString);
+    // console.log(totalString);
     setPrice(totalString);
   }, [cart]);
 
