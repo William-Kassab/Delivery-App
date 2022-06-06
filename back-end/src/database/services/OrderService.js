@@ -7,8 +7,7 @@ const createOrder = async (
   totalPrice,
   deliveryAddress,
   deliveryNumber,
-  productId,
-  quantity,
+  cart,
   ) => {
   const createOrder = await Sales.create({
     userId,
@@ -21,11 +20,14 @@ const createOrder = async (
   });
   const orderId = createOrder.id;
 
-  await SalesProducts.create({
-    saleId: Number(orderId),
-    productId,
-    quantity,
-  });
+  await Promise.all(cart.map(async (product) => {
+    const createdSalesProducts = await SalesProducts.create({
+      saleId: Number(orderId),
+      productId: product.id,
+      quantity: product.quantity,
+    });
+    return createdSalesProducts;
+  }));
 
   return createOrder;
 };

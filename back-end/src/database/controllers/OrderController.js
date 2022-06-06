@@ -7,8 +7,7 @@ const createOrder = async (req, res) => {
     totalPrice,
     deliveryAddress,
     deliveryNumber,
-    productId,
-    quantity,
+    cart,
   } = req.body;
   const createdOrder = await Sales.createOrder(
     userId,
@@ -16,8 +15,7 @@ const createOrder = async (req, res) => {
     totalPrice,
     deliveryAddress,
     deliveryNumber,
-    productId,
-    quantity,
+    cart,
   );
 
   return res.status(201).json(createdOrder.id);
