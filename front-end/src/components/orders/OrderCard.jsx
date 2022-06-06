@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 
 const OrderCard = ({ id, status, data, price }) => (
   <div>
-    <p>
-      Pedido
-      {`${id}`}
-    </p>
     <div>
-      <p>{status}</p>
+      <p>
+        Pedido
+      </p>
+      <p data-testid={ `customer_orders__element-order-id-${id}` }>
+        {`${id}`}
+      </p>
     </div>
-    <p>{data}</p>
-    <p>{price}</p>
+    <div>
+      <p data-testid={ `customer_orders__element-delivery-status-${id}` }>{status}</p>
+    </div>
+    <p data-testid={ `customer_orders__element-order-date-${id}` }>{data}</p>
+    <p data-testid={ `customer_orders__element-card-price-${id}` }>{price}</p>
   </div>
 );
 
