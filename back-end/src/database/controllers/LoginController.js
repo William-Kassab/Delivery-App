@@ -11,7 +11,7 @@ const loginController = async (req, res) => {
     const userEmail = await Users.findAll({ where: { email } });
     
     if (userEmail.length === 0) return res.status(404).json({ message: 'User not found ' });
-    const [{ name, role }] = userEmail;
+    const [{ name, role, id }] = userEmail;
     const jwtConfig = {
       expiresIn: '365d',
       algorithm: 'HS256',
@@ -19,7 +19,7 @@ const loginController = async (req, res) => {
 
     const token = jwt.sign({ data: email }, secret, jwtConfig);
 
-    return res.status(200).json({ token, name, email, role });
+    return res.status(200).json({ token, name, email, role, id });
   } catch (e) {
     console.log(e.message);
   }

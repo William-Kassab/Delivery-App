@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authLogin } from '../../service/api';
 import rockGlass from '../../images/rockGlass.svg';
 import './loginStyle.css';
+import MyContext from '../../context/MyContext';
 
 function LoginPage() {
   const [login, setLogin] = useState({
@@ -10,6 +11,7 @@ function LoginPage() {
     password: '',
   });
   const [errorMsg, setErrorMsg] = useState(false);
+  const { setUser } = useContext(MyContext);
   const navigate = useNavigate();
 
   function handleChange({ target }) {
@@ -25,6 +27,8 @@ function LoginPage() {
       setErrorMsg(true);
     } else {
       setErrorMsg(false);
+      console.log(result.data.token);
+      setUser({ name: result.data.name, id: result.data.id, token: result.data.token });
       localStorage.setItem('user', JSON.stringify(result.data));
       switch (result.data.role) {
       case 'administrator':
