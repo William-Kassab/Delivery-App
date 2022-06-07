@@ -5,7 +5,7 @@ import MyContext from './MyContext';
 function MyProviderContext({ children }) {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [price, setPrice] = useState('0,00');
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('cart')) || '');
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
