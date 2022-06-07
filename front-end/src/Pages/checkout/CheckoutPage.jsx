@@ -1,8 +1,8 @@
 import React from 'react';
 import AddressDetails from '../../components/checkout/AddressDetails';
-import CheckoutButton from '../../components/checkout/CheckoutButton';
 import OrderTable from '../../components/checkout/OrderTable';
 import Navbar from '../../components/navbar';
+import './checkoutStyle.css';
 
 function CheckoutPage() {
   return (
@@ -10,7 +10,6 @@ function CheckoutPage() {
       <Navbar />
       <div>
         <OrderTable />
-        <CheckoutButton />
         <AddressDetails />
       </div>
     </>

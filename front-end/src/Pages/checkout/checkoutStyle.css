@@ -1,0 +1,106 @@
+.table-container {
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: auto;
+  margin-top: 4rem;
+  padding: 10px;
+  width: 1000px;
+}
+
+.table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+.th-head tr {
+  height: 64px;
+}
+
+.tb-body tr {
+  height: 50px;
+  text-align: center;
+}
+
+.tb-body tr:nth-child( odd ) {
+  background-color: #f1f3f5;
+}
+
+.tb-body tr:nth-child( even ) {
+  background: white;
+}
+
+.remove-btn img {
+  height: 30px;
+  width: 30px;
+}
+
+.remove-btn {
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.totalPrice {
+  align-self: flex-end;
+  background-color: #036b52;
+  border-radius: 10px;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 10px;
+  width: 200px;
+}
+
+.address-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: auto;
+  margin-top: 4rem;
+  padding-bottom: 30px;
+  width: 1000px;
+}
+
+.address-form {
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  display: flex;
+  gap: 2rem;
+  padding: 30px;
+}
+
+.address-form select {
+  border: 1px solid #2fc18c;
+  border-radius: 10px;
+  height: 46px;
+  width: 200px;
+}
+
+.address-form input {
+  border: 1px solid #2fc18c;
+  border-radius: 10px;
+  height: 40px;
+  width: 200px;
+}
+
+.address-form button {
+  background-color: #036b52;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 700;
+  padding: 5px;
+  width: 100%;
+}
+
+.address-label {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

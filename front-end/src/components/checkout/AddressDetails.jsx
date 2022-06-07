@@ -37,16 +37,22 @@ const AddressDetails = () => {
   }
 
   return (
-    <>
+    <div className="address-container">
       Detalhes e Endereço para Entrega
-      <form onSubmit={ handleSubmit }>
-        <div>
+      <form onSubmit={ handleSubmit } className="address-form">
+        <label
+          htmlFor="seller"
+          className="address-label"
+        >
           <p>P. Vendedora Responsável:</p>
           <select data-testid="customer_checkout__select-seller">
             <option>Fulana Pereira</option>
           </select>
-        </div>
-        <div>
+        </label>
+        <label
+          htmlFor="deliveryAddress"
+          className="address-label"
+        >
           <p>Endereço:</p>
           <input
             type="text"
@@ -55,8 +61,11 @@ const AddressDetails = () => {
             value={ checkout.deliveryAddress }
             onChange={ handleChange }
           />
-        </div>
-        <div>
+        </label>
+        <label
+          htmlFor="delieryNumber"
+          className="address-label"
+        >
           <p>Número:</p>
           <input
             type="text"
@@ -65,7 +74,7 @@ const AddressDetails = () => {
             value={ checkout.deliveryNumber }
             onChange={ handleChange }
           />
-        </div>
+        </label>
         <button
           type="submit"
           data-testid="customer_checkout__button-submit-order"
@@ -74,7 +83,7 @@ const AddressDetails = () => {
 
         </button>
       </form>
-    </>);
+    </div>);
 };
 
 export default AddressDetails;
