@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Navbar from '../../components/navbar';
 import OrderCard from '../../components/orders/OrderCard';
+import MyContext from '../../context/MyContext';
+import { getSales } from '../../service/api';
 
-const ordersArray = [
-  { id: 1, price: 30.56, date: '06/06/2022', status: 'pendente' },
-  { id: 2, price: 50.56, date: '06/07/2022', status: 'preparando' },
-  { id: 3, price: 70.56, date: '06/08/2022', status: 'entregue' },
-];
+const Order = () => {
+  const { user: { token } } = useContext(MyContext);
+  const [sales, setSales] = useState([]);
 
-const Order = () => (
-  <section>
-    {ordersArray.map(({ id, price, date, status }, index) => (<OrderCard
-      id={ id }
-      price={ price }
-      date={ date }
-      status={ status }
-      key={ index }
-    />))}
-  </section>
-);
+  useEffect(() => {
+    (async () => {
+      const { data } = await getSales(token);
+      setSales(data);
+      console.log(data);
+    })();
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+      <section>
+        {sales.map(({ id, totalPrice, saleDate, status }, index) => (<OrderCard
+          id={ id }
+          price={ totalPrice }
+          saleDate={ saleDate }
+          status={ status }
+          key={ index }
+        />))}
+      </section>
+    </>
+  );
+};
 
 export default Order;
