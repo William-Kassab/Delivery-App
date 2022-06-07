@@ -37,7 +37,7 @@ export const getProducts = async (token) => {
 export const createSale = async (body, token) => {
   try {
     const result = await api.post('/orders', body, { headers: { Authorization: token } });
-    console.log(result);
+    return result;
   } catch (error) {
     console.log(error);
     return 'error';
