@@ -24,6 +24,8 @@ const products = require('../database/controllers/ProductController');
 
 const orders = require('../database/controllers/OrderController');
 
+const salesProducts = require('../database/controllers/SalesProductsController');
+
 app.post('/login', isEmailValid, isPasswordValid, login.loginController);
 
 app.post('/register', isNameValid, isEmailValid, isPasswordValid, user.createUser);
@@ -31,5 +33,9 @@ app.post('/register', isNameValid, isEmailValid, isPasswordValid, user.createUse
 app.get('/products', validateJWT, products.getAllProducts);
 
 app.post('/orders', validateJWT, orders.createOrder);
+
+app.get('/orders/:id', validateJWT, salesProducts.getSalesProductsById);
+
+app.get('/orders', validateJWT, orders.getAllOrders);
 
 module.exports = app;

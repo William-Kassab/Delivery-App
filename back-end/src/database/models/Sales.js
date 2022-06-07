@@ -46,11 +46,12 @@ const Sales = (sequelize, DataTypes) => {
   {
     tableName: 'sales',
     timestamps: false,
+    underscored: true,
   });
   Sales.associate = (models) => {
-    Sales.hasMany(models.SalesProducts, {foreignKey: 'sale_id', as: 'sale_products'});
-    Sales.belongsTo(models.Users, {foreignKey: 'user_id', as: 'user_sales'});
-    Sales.belongsTo(models.Users, {foreignKey: 'seller_id', as: 'user_seller'});
+    Sales.hasMany(models.SalesProducts, {foreignKey: 'saleId', as: 'sale_products'});
+    Sales.belongsTo(models.Users, {foreignKey: 'userId', as: 'user_sales'});
+    Sales.belongsTo(models.Users, {foreignKey: 'sellerId', as: 'user_seller'});
   };
   return Sales;
 };

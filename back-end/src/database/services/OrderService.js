@@ -32,6 +32,13 @@ const createOrder = async (
   return createOrder;
 };
 
+const getAllOrders = async () => {
+  const getAllOrders = await Sales.findAll();
+
+  return getAllOrders;
+};
+
 module.exports = {
   createOrder,
+  getAllOrders,
 };
