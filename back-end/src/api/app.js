@@ -36,4 +36,6 @@ app.post('/orders', validateJWT, orders.createOrder);
 
 app.post('/admin', validateJWT, admin.createUserByAdmin);
 
+app.get('/admin', validateJWT, admin.getAllUsers);
+
 module.exports = app;

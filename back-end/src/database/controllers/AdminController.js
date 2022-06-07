@@ -31,6 +31,13 @@ const createUserByAdmin = async (req, res) => {
   }
 };
 
+const getAllUsers = async (_req, res) => {
+  const usersList = await Users.findAll();
+
+  return res.status(200).json(usersList);
+};
+
 module.exports = {
   createUserByAdmin,
+  getAllUsers,
 };
