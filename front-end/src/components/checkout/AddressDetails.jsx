@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MyContext from '../../context/MyContext';
 import { createSale } from '../../service/api';
 
@@ -10,7 +10,7 @@ const AddressDetails = () => {
     deliveryNumber: '',
     sellerId: 2,
   });
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -25,16 +25,15 @@ const AddressDetails = () => {
     const saleObj = {
       userId: user.id,
       sellerId: 2,
-      totalPrice: price,
+      totalPrice: price.replace(',', '.'),
       deliveryAddress: checkout.deliveryAddress,
       deliveryNumber: checkout.deliveryNumber,
       cart,
     };
-    console.log(user.token);
+    console.log(saleObj);
     const result = await createSale(saleObj, user.token);
-    console.log(result);
-    const routeId = result.data.id;
-    console.log(routeId);
+    const orderId = result.data;
+    navigate(`/customer/orders/${orderId}`);
   }
 
   return (
