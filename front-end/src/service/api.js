@@ -43,3 +43,13 @@ export const createSale = async (body, token) => {
     return 'error';
   }
 };
+
+export const createUserByAdmin = async (body, token) => {
+  try {
+    const result = await api.post('/admin', body, { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'invalid Register';
+  }
+};
