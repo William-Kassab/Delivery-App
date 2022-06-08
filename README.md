@@ -425,6 +425,16 @@ describe(requirement(1), () => {
   - Escreva testes unitários e sinta-se livre para alterar a UI. Contudo, respeite os atributos `data-testid`, pois eles serão usados na correção do projeto.
 
 </details>
+  
+ <details>
+  <summary>
+    <strong>⚠️ Upload de arquivos</strong>
+  </summary>
+
+  - Caso necessite realizar upload de algum arquivo/imagem, pode utilizar a ferramenta/tecnologia de sua preferência.
+Importante ressaltar que temos no course um conteúdo sobre o Multer e recomendamos a sua utilização, que inclusive já está instalado nas dependências, não deixe de dar uma olhada.
+
+</details>
 
 <details>
   <summary>
@@ -925,7 +935,7 @@ Todos os testes desse arquivo:
 
 ---
 
-####  21 - Desenvolva a tela de checkout do cliente de forma a gerar uma nova venda na tabela sales, assim como relações em salesProducts, ao finalizar o pedido
+####  21 - Desenvolva a tela de checkout do cliente de forma a gerar uma nova venda na tabela sales, assim como relações em sales_products, ao finalizar o pedido
 
 **Observações técnicas**
 
@@ -938,7 +948,7 @@ Todos os testes desse arquivo:
 - O "status" padrão de cada pedido deve ser `Pendente`;
 
 - Deve-se garantir que a requisição para API se encarregue de criar uma venda, e na mesma requisição, relacionar essa venda com os produtos do carrinho:
-  - Aqui possuímos uma relação de `N:N` (muitos para muitos) onde se relacionam as tabelas: `sales` < 1:N > `salesProducts` < N:1 > `products`.
+  - Aqui possuímos uma relação de `N:N` (muitos para muitos) onde se relacionam as tabelas: `sales` < 1:N > `sales_products` < N:1 > `products`.
 
 - Os testes farão a inserção da venda via checkout e após isso farão a validação desses dados no banco de dados.
 
