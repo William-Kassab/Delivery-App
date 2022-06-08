@@ -61,6 +61,8 @@ export const getUsers = async (token) => {
   } catch (error) {
     console.log(error);
     return 'invalid token';
+  }
+};
 
 export const getSales = async (token) => {
   try {
