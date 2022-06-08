@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authLogin } from '../../service/api';
 import rockGlass from '../../images/rockGlass.svg';
@@ -13,6 +13,13 @@ function LoginPage() {
   const [errorMsg, setErrorMsg] = useState(false);
   const { setUser } = useContext(MyContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.role === 'customer') {
+      navigate('/customer/products');
+    }
+  });
 
   function handleChange({ target }) {
     const { name, value } = target;
