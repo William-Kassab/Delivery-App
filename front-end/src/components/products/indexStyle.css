@@ -19,6 +19,8 @@
 
 .productPrice {
   background-color: #2fc18c;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
   padding: 10px;
   width: 80px;
 }

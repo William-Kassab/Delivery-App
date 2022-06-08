@@ -43,3 +43,23 @@ export const createSale = async (body, token) => {
     return 'error';
   }
 };
+
+export const getSales = async (token) => {
+  try {
+    const result = await api.get('/orders', { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'error';
+  }
+};
+
+export const getSaleDetails = async (token, id) => {
+  try {
+    const result = await api.get(`/orders/${id}`, { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'error';
+  }
+};
