@@ -34,7 +34,6 @@ function LoginPage() {
       setErrorMsg(true);
     } else {
       setErrorMsg(false);
-      console.log(result.data.token);
       setUser({ name: result.data.name, id: result.data.id, token: result.data.token });
       localStorage.setItem('user', JSON.stringify(result.data));
       switch (result.data.role) {
