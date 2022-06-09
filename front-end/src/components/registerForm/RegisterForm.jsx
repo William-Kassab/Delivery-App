@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { createUserByAdmin } from '../../service/api';
+import MyContext from '../../context/MyContext';
 import './registerForm.css';
 
 export default function RegisterForm() {
+  const { user } = useContext(MyContext);
   const [register, setRegister] = useState({
     name: '',
     email: '',
     password: '',
     role: 'customer',
   });
-  // const [errorMsg, setErrorMsg] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(false);
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -17,15 +20,15 @@ export default function RegisterForm() {
       [name]: value });
   }
 
-  // async function handleClickRegister() {
-  //   const result = await createUserByAdmin(register);
-  //   if (result === 'invalid Register') {
-  //     setErrorMsg(true);
-  //   } else {
-  //     setErrorMsg(false);
-  //     console.log(result.data);
-  //   }
-  // }
+  async function handleClickRegister() {
+    const result = await createUserByAdmin(register, user.token);
+    if (result === 'invalid Register') {
+      setErrorMsg(true);
+    } else {
+      setErrorMsg(false);
+      console.log(errorMsg);
+    }
+  }
 
   const regex = /\S+@\S+\.\S+/;
   const lengthEmail = 5;
@@ -89,20 +92,20 @@ export default function RegisterForm() {
           type="button"
           data-testid="admin_manage__button-register"
           disabled={ !isValid }
-          // onClick={ handleClickRegister }
+          onClick={ handleClickRegister }
         >
           Cadastrar
         </button>
-        {/* {
+        {
           errorMsg && (
             <p
               data-testid="admin_manage__element-invalid-register"
-              style={ { color: 'red' } }
+              className="error-msg"
             >
               Não foi possível realizar o cadastro
             </p>
           )
-        } */}
+        }
       </fieldset>
     </form>
   );

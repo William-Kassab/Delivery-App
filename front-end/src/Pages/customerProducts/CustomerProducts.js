@@ -13,7 +13,6 @@ const CustomerProducts = () => {
     (async () => {
       const { token } = JSON.parse(localStorage.getItem('user'));
       const { data } = await getProducts(token);
-      // console.log(data);
       setProducts(data);
     })();
   }, []);

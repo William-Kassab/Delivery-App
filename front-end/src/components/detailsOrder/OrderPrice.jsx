@@ -6,12 +6,13 @@ const OrderPrice = ({ price }) => (
     type="button"
     data-testid="customer_order_details__element-order-total-price"
   >
-    {`Total: R$ ${price}`}
+    Total: R$
+    {price.toString().replace('.', ',')}
   </button>
 );
 
 OrderPrice.propTypes = {
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default OrderPrice;

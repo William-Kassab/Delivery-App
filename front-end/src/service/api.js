@@ -43,3 +43,43 @@ export const createSale = async (body, token) => {
     return 'error';
   }
 };
+
+export const createUserByAdmin = async (body, token) => {
+  try {
+    const result = await api.post('/admin', body, { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'invalid Register';
+  }
+};
+
+export const getUsers = async (token) => {
+  try {
+    const result = await api.get('/admin', { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'invalid token';
+  }
+};
+
+export const getSales = async (token) => {
+  try {
+    const result = await api.get('/orders', { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'error';
+  }
+};
+
+export const getSaleDetails = async (token, id) => {
+  try {
+    const result = await api.get(`/orders/${id}`, { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'error';
+  }
+};

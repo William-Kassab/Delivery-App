@@ -21,12 +21,13 @@ const SalesProducts = (sequelize, DataTypes) => {
     },
   },
   {
-    tableName: 'salesProducts',
+    tableName: 'sales_products',
     timestamps: false,
+    underscored: true,
   })
   SalesProducts.associate = (models) => {
-    SalesProducts.belongsTo(models.Sales, {foreignKey: 'sale_id', as: 'sale_products'});
-    SalesProducts.belongsTo(models.Products, {foreignKey: 'product_id', as: 'product_sales'});
+    SalesProducts.belongsTo(models.Sales, {foreignKey: 'saleId', as: 'sale_products'});
+    SalesProducts.belongsTo(models.Products, {foreignKey: 'productId', as: 'product_sales'});
   };
   return SalesProducts;
 };

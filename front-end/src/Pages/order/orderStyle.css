@@ -1,0 +1,7 @@
+.card-conainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 40px;
+  padding: 30px;
+}

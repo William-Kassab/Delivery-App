@@ -5,7 +5,7 @@ import MyContext from './MyContext';
 function MyProviderContext({ children }) {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [price, setPrice] = useState('0,00');
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || '');
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -18,13 +18,6 @@ function MyProviderContext({ children }) {
     const totalString = String(totalNumber).replace(/\./, ',');
     setPrice(totalString);
   }, [cart]);
-
-  useEffect(() => {
-    if (user === '' && JSON.parse(localStorage.getItem('user'))) {
-      const { name, id, token } = JSON.parse(localStorage.getItem('user'));
-      setUser({ name, id, token });
-    }
-  }, []);
 
   const contextValue = {
     cart,
