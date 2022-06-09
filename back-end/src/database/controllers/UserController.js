@@ -32,6 +32,13 @@ const createUser = async (req, res) => {
   }
 };
 
+const getAllSellers = async (_req, res) => {
+  const getAllSellers = await Users.findAll({ where: { role: 'seller' } });
+
+  return res.status(200).json(getAllSellers);
+};
+
 module.exports = {
   createUser,
+  getAllSellers,
 };
