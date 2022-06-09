@@ -13,6 +13,10 @@ export default function RegisterForm() {
   });
   const [errorMsg, setErrorMsg] = useState(false);
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   function handleChange({ target }) {
     const { name, value } = target;
     setRegister({
@@ -26,7 +30,7 @@ export default function RegisterForm() {
       setErrorMsg(true);
     } else {
       setErrorMsg(false);
-      console.log(errorMsg);
+      refreshPage();
     }
   }
 

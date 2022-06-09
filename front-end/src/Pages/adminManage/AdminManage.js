@@ -9,6 +9,7 @@ export default function AdminManage() {
       <Navbar />
       <h2 className="form-title">Cadastrar novo usuário</h2>
       <RegisterForm />
+      <h2 className="form-title">Lista de usuários</h2>
       <UsersTable />
     </div>
   );
