@@ -41,7 +41,7 @@ Products.propTypes = {
     id: PropTypes.number.isRequired,
     price: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    url_image: PropTypes.string.isRequired,
   })),
 };
 

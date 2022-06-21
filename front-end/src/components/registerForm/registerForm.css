@@ -7,6 +7,7 @@
 .form-container {
   border: 1px solid rgb(212, 212, 212);
   border-radius: 3px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -50,4 +51,9 @@
 .form-container button:disabled {
   cursor: not-allowed;
   opacity: 0.4;
+}
+
+.error-msg {
+  align-self: center;
+  color: red;
 }

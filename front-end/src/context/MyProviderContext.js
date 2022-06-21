@@ -19,13 +19,6 @@ function MyProviderContext({ children }) {
     setPrice(totalString);
   }, [cart]);
 
-  // useEffect(() => {
-  //   if (user === '' && JSON.parse(localStorage.getItem('user'))) {
-  //     const { name, id, token } = JSON.parse(localStorage.getItem('user'));
-  //     setUser({ name, id, token });
-  //   }
-  // }, []);
-
   const contextValue = {
     cart,
     setCart,
