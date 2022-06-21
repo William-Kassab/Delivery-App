@@ -1,11 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import MyContext from '../../context/MyContext';
-import { getUsers } from '../../service/api';
+import { deleteUserByAdmin, getUsers } from '../../service/api';
 import './usersTable.css';
 
 export default function UsersTable() {
   const { user } = useContext(MyContext);
   const [userList, setUserList] = useState([]);
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
   useEffect(() => {
     (async () => {
@@ -17,6 +21,11 @@ export default function UsersTable() {
       setUserList(filteredList);
     })();
   }, []);
+
+  const deleteUser = async (id) => {
+    await deleteUserByAdmin(user.token, id);
+    refreshPage();
+  };
 
   return (
     <table className="users-table-container">
@@ -58,7 +67,12 @@ export default function UsersTable() {
             <td
               data-testid={ `admin_manage__element-user-table-remove-${index}` }
             >
-              <button type="button">Excluir</button>
+              <button
+                type="button"
+                onClick={ () => deleteUser(id) }
+              >
+                Excluir
+              </button>
             </td>
           </tr>
         ))}
