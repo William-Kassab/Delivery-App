@@ -46,4 +46,6 @@ app.get('/orders/:id', validateJWT, salesProducts.getSalesProductsById);
 
 app.get('/orders', validateJWT, orders.getAllOrders);
 
+app.delete('/admin/:id', validateJWT, admin.deleteUser);
+
 module.exports = app;
