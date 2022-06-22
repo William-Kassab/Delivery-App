@@ -28,6 +28,8 @@ const admin = require('../database/controllers/AdminController');
 
 const salesProducts = require('../database/controllers/SalesProductsController');
 
+const sales = require('../database/controllers/SaleController');
+
 app.post('/login', isEmailValid, isPasswordValid, login.loginController);
 
 app.post('/register', isNameValid, isEmailValid, isPasswordValid, user.createUser);
@@ -43,6 +45,8 @@ app.post('/admin', validateJWT, admin.createUserByAdmin);
 app.get('/admin', validateJWT, admin.getAllUsers);
 
 app.get('/orders/:id', validateJWT, salesProducts.getSalesProductsById);
+
+app.patch('orders/:id', validateJWT, sales.updateSaleStatusById);
 
 app.get('/orders', validateJWT, orders.getAllOrders);
 

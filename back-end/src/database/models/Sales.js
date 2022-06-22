@@ -41,6 +41,8 @@ const Sales = (sequelize, DataTypes) => {
     status: {
       defaultValue: 'pendente',
       type: DataTypes.STRING(),
+      onUpdate: CASCADE,
+      onDelete: CASCADE,
     }
   },
   {
