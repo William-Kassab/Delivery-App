@@ -46,7 +46,7 @@ app.get('/admin', validateJWT, admin.getAllUsers);
 
 app.get('/orders/:id', validateJWT, salesProducts.getSalesProductsById);
 
-app.patch('orders/:id', validateJWT, sales.updateSaleStatusById);
+app.patch('/orders/:id', validateJWT, sales.updateSaleStatusById);
 
 app.get('/orders', validateJWT, orders.getAllOrders);
 
