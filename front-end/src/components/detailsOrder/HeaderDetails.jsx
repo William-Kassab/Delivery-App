@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { updateSaleStatusById } from '../../service/api';
+import MyContext from '../../context/MyContext';
 
 const HeaderDetails = ({ headerInfo }) => {
   const { id, sellerName, date, status } = headerInfo;
+  const [saleStatus, setSaleStatus] = useState(status);
   const [orderDate, setOrderDate] = useState('');
+  const { user: { token } } = useContext(MyContext);
 
   useEffect(() => {
     const objDate = new Date(date);
     setOrderDate(objDate.toLocaleDateString('pt-BR'));
   }, []);
+
+  async function updateSaleStatus() {
+    await updateSaleStatusById(token, id, 'Em Trânsito');
+    setSaleStatus('Entregue');
+  }
 
   return (
     <div>
@@ -28,12 +37,13 @@ const HeaderDetails = ({ headerInfo }) => {
       <p
         data-testid="customer_order_details__element-order-details-label-delivery-status"
       >
-        {status}
+        {saleStatus}
       </p>
       <button
         type="button"
         data-testid="customer_order_details__button-delivery-check"
-        disabled
+        disabled={ saleStatus !== 'Em Trânsito' }
+        onClick={ () => updateSaleStatus() }
       >
         Marcar como entregue
       </button>

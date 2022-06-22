@@ -8,8 +8,7 @@ const updateSaleStatusById = async (id, status) => {
     case 'Preparando':
       await Sales.update({ status: "Em Trânsito" }, { where: { id }})
       break;
-    case 'Em trÃ¢nsito':
-      console.log(status)
+    case 'Em Trânsito':
       await Sales.update({status: "Entregue"}, { where: { id }})
       break;
     default:
