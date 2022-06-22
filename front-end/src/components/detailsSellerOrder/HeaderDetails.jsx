@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { updateSaleStatusById } from '../../service/api';
+import MyContext from '../../context/MyContext';
 
 const HeaderDetails = ({ headerInfo }) => {
   const { saleId, status, saleDate } = headerInfo;
   const [saleStatus, setSaleStatus] = useState(status);
-
-  useEffect(() => {
-
-  }, [saleStatus]);
+  const { id } = useParams();
+  const { user: { token } } = useContext(MyContext);
 
   function formatDate() {
     const dateOnly = (saleDate.split('T')[0]);
@@ -17,12 +18,14 @@ const HeaderDetails = ({ headerInfo }) => {
     return realDate;
   }
 
-  function updateSaleStatus() {
+  async function updateSaleStatus() {
     switch (saleStatus) {
     case 'Pendente':
+      await updateSaleStatusById(token, id, 'Pendente');
       setSaleStatus('Preparando');
       break;
     case 'Preparando':
+      await updateSaleStatusById(token, id, 'Preparando');
       setSaleStatus('Em Trânsito');
       break;
     default:

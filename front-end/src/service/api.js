@@ -94,3 +94,15 @@ export const deleteUserByAdmin = async (token, id) => {
     return 'error';
   }
 };
+
+export const updateSaleStatusById = async (token, id, status) => {
+  try {
+    const result = await api.patch(`/orders/${id}`,
+      { saleStatus: status },
+      { headers: { Authorization: token } });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return 'error';
+  }
+};
