@@ -2,10 +2,10 @@ const sales = require('../services/SaleService');
 
 const updateSaleStatusById = async (req, res) => {
   const { id } = req.params;
-  const { status } = req.headers;
-
+  const { saleStatus } = req.body;
+  
   try {
-    await sales.updateSaleStatusById(id, status);
+    await sales.updateSaleStatusById(id, saleStatus);
   } catch (error) {
     console.error(error)
   }
