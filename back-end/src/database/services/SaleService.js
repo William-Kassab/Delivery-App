@@ -6,7 +6,7 @@ const updateSaleStatusById = async (id, status) => {
       await Sales.update({ status: "Preparando" }, { where: { id }})
       break;
     case 'Preparando':
-      await Sales.update({ status: "Em trânsito" }, { where: { id }})
+      await Sales.update({ status: "Em Trânsito" }, { where: { id }})
       break;
     case 'Em trÃ¢nsito':
       console.log(status)
