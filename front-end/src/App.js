@@ -8,6 +8,8 @@ import CheckoutPage from './Pages/checkout/CheckoutPage';
 import AdminManage from './Pages/adminManage/AdminManage';
 import Order from './Pages/order/Order';
 import DetailsOrder from './Pages/detailsOrder/DetailsOrder';
+import SellerOrder from './Pages/sellerOrder/SellerOrder';
+import DetailsSellerOrder from './Pages/detailsSellerOrder/DetailsSellerOrder';
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
       <Route path="/customer/checkout" element={ <CheckoutPage /> } />
       <Route path="/customer/orders" element={ <Order /> } />
       <Route path="/customer/orders/:id" element={ <DetailsOrder /> } />
-      <Route path="/seller/orders" element={ <p>Página do Vendedor</p> } />
+      <Route path="/seller/orders" element={ <SellerOrder /> } />
+      <Route path="/seller/orders/:id" element={ <DetailsSellerOrder /> } />
       <Route path="/admin/manage" element={ <AdminManage /> } />
     </Routes>
   );

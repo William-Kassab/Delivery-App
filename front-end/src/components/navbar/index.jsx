@@ -34,7 +34,7 @@ const Navbar = () => {
     if (pathname.includes('/seller')) {
       return (
         <Link
-          data-testid="seller_orders__element-navbar"
+          data-testid="customer_products__element-navbar-link-orders"
           to="/seller/orders"
           className="requests"
         >
