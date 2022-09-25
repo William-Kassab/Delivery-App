@@ -4,7 +4,7 @@
 
 ## Como acessar a aplicação
 
-Basta acessar [esse link](https://delivery-app-trybe-group17.herokuapp.com/).
+[Delivery App](https://delivery-app-trybe-group17.herokuapp.com/).
 
 ---
 
